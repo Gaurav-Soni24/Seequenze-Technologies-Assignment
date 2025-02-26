@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import FilterDropdown from "../components/FilterDropdown";
 import TaskCard from "../components/TaskCard";
 import TaskModal from "../components/TaskModal";
@@ -13,7 +13,7 @@ export default function Home() {
 	const [filter, setFilter] = useState<"all" | "todo" | "onProgress" | "done" | "timeOut">("all");
 	const filterOptions: (typeof filter)[] = ["all", "todo", "onProgress", "done", "timeOut"];
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		fetchTasks();
 	}, [fetchTasks]);
 
