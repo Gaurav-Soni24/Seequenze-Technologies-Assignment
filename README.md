@@ -3,6 +3,13 @@
 ## Overview
 This is a **Task Management Application** built with **React (TypeScript)** for the frontend and **Node.js (Express & TypeScript)** for the backend. It allows users to create, update, delete, and manage tasks efficiently while incorporating advanced async operations and automatic task timeout handling.
 
+## Deployment
+### Frontend
+Deployed on **Vercel**: [Live Link](https://seequenze-technologies-assignment-eta.vercel.app/)
+
+### Backend
+Deployed on **Vercel**: [Live API](https://seequenze-technologies-assignment-api.vercel.app/)
+
 ## Features
 ### Frontend
 - Built using **React with TypeScript**.
@@ -84,13 +91,6 @@ The frontend will be accessible at `http://localhost:5173`
 | PUT    | /tasks/:id    | Update a task        |
 | DELETE | /tasks/:id    | Delete a task        |
 | GET    | /streaming    | Fetch streaming data |
-
-## Deployment
-### Frontend
-Deployed on **Vercel**: [Live Link](https://seequenze-technologies-assignment-eta.vercel.app/)
-
-### Backend
-Deployed on **Render**/**AWS**/**Heroku**: [Live API](https://seequenze-technologies-assignment-api.vercel.app/)
 
 ## Technologies Used
 ### Frontend:
