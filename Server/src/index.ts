@@ -16,7 +16,7 @@ app.use(cookieParser());
 
 // routes
 app.get("/", (req, res) => {
-	res.json({ message: "welcome 😊, Server is up and running" });
+	res.json({ message: "🚀 Server is up and running" });
 });
 app.use(taskRouter);
 
