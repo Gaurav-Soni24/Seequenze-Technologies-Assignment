@@ -51,12 +51,14 @@ const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose, task, mode }) =>
     try {
       if (mode === "add") {
         await createTask(taskData);
-		await useTaskStore.getState().fetchTasks();
+        await useTaskStore.getState().fetchTasks();
         setSuccessModalOpen(true);
       } else if (mode === "edit" && task) {
-		await updateTaskById(task.id, taskData);
-		window.location.reload();
-        onClose();
+        await updateTaskById(task.id, taskData);
+        onClose();  // Close the modal before reloading
+        setTimeout(() => {
+          window.location.reload();
+        }, 100);  // Slight delay to ensure state updates before reload
       }
     } catch (error) {
       console.error("Error saving task:", error);
