@@ -99,6 +99,7 @@ const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose, task, mode }) =>
               <label className="block text-sm font-medium text-gray-600 mb-1">Description</label>
               <textarea
                 name="description"
+                required
                 value={taskData.description}
                 onChange={handleChange}
                 className="w-full border border-gray-300 px-3 py-2 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400 min-h-[80px] resize-none"
