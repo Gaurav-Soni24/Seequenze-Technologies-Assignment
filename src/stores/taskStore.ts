@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import axios from "axios";
 
-const API_BASE_URL = "https://seequenze-technologies-assignment.vercel.app";
+const API_BASE_URL = "http://localhost:8080";
 
 export interface Task {
 	id: string;
@@ -70,7 +70,8 @@ export const useTaskStore = create<TaskStore>((set) => ({
 	createTask: async (task) => {
 		try {
 			const response = await axios.post(`${API_BASE_URL}/tasks`, task);
-			set((state) => ({ tasks: [...state.tasks, response.data] }));
+			const createdTask = response.data; // Ensure we get the correct ID
+			set((state) => ({ tasks: [...state.tasks, createdTask] }));
 		} catch (error) {
 			console.error("Error creating task:", error);
 		}

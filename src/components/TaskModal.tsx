@@ -12,6 +12,7 @@ interface TaskModalProps {
 const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose, task, mode }) => {
   const { createTask, updateTaskById } = useTaskStore();
   const [taskData, setTaskData] = useState({
+    id: "", // Ensure every task has a unique id
     title: "",
     description: "",
     dueDate: "",
@@ -22,6 +23,7 @@ const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose, task, mode }) =>
   useEffect(() => {
     if (task && mode === "edit") {
       setTaskData({
+        id: task.id || "", // Keep the existing id when editing
         title: task.title || "",
         description: task.description || "",
         dueDate: task.dueDate || "",
@@ -29,6 +31,7 @@ const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose, task, mode }) =>
       });
     } else {
       setTaskData({
+        id: crypto.randomUUID(), // Generate a new unique id when adding a task
         title: "",
         description: "",
         dueDate: "",
@@ -48,9 +51,11 @@ const TaskModal: React.FC<TaskModalProps> = ({ isOpen, onClose, task, mode }) =>
     try {
       if (mode === "add") {
         await createTask(taskData);
+		await useTaskStore.getState().fetchTasks();
         setSuccessModalOpen(true);
       } else if (mode === "edit" && task) {
-        await updateTaskById(task.id, taskData);
+		await updateTaskById(task.id, taskData);
+		window.location.reload();
         onClose();
       }
     } catch (error) {
